@@ -34,6 +34,10 @@ export class SignupComponent {
     this.userForm.valueChanges.subscribe(() => {
       this.onuserFormValuesChanged();
     });
+
+
+
+    
   }
 
 
@@ -63,7 +67,7 @@ export class SignupComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       name: ['', [Validators.required]],
-      rolw: 'role',
+      role: 'user',
 
     });
   }

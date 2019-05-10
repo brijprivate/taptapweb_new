@@ -7,6 +7,7 @@ import { MilageComponent } from './milage/milage.component';
 import { TimeComponent } from './time/time.component';
 import { SearchComponent } from './search/search.component';
 import { FavouriteComponent } from './favourite/favourite.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 export const ComponentsRoutes: Routes = [
@@ -78,6 +79,18 @@ export const ComponentsRoutes: Routes = [
         component: DevicesComponent,
         data: {
           title: 'Devices',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'ngComponent' },
+            { title: 'Pagination' }
+          ]
+        }
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        data: {
+          title: 'Profile',
           urls: [
             { title: 'Dashboard', url: '/dashboard' },
             { title: 'ngComponent' },

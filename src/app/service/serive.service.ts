@@ -18,8 +18,7 @@ export class SeriveService {
     return this.http.post(baseURL + 'user/login', data);
   }
   getdetailsbyuserid(id){
-    return this.http.get(baseURL + 'user/userDashboard?userId='+id);
-
+    return this.http.get(baseURL + 'user/userDashboard?userId='+this.userid);
   }
   getprofilebyuserid(id){
     return this.http.get(baseURL + 'user/profile?id='+id);
@@ -40,6 +39,10 @@ export class SeriveService {
 
   }
   
+  upload(file:any){
+    return this.http.post(baseURL + 'file/upload',file);
+
+  }
   // upload(file: any) {
   //   let _base = this;
   //   return new Promise(function (resolve, reject) {

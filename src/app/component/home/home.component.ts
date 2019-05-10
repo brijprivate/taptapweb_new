@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Router } from '@angular/router';
+import { SeriveService } from '../../service/serive.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +12,22 @@ import { Chart } from 'chart.js';
 export class HomeComponent implements OnInit {
   @ViewChild('doughnutCanvas') doughnutCanvas;
   doughnutChart: any;
-  constructor() { }
-
+  userid: any;
+  constructor(private router: Router,public api:SeriveService,private modalService: NgbModal) { 
+    this.getdetailsbyuserid();
+    this.userid=localStorage.getItem('userid')
+    console.log(this.userid);
+     }
+  
+   getdetailsbyuserid(){
+    this.api.getdetailsbyuserid(this.userid).subscribe(result => {
+    console.log('userdata', result)
+    },
+      err => {
+        console.log(err);
+        alert('something went wrong');
+      })
+  }
   ngOnInit() {
     var _base = this;
     setTimeout(function () {

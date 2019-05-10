@@ -1,127 +1,168 @@
 <div class="card">
-  <div class="card-body">
-      <!-- title -->
-      <div class="d-md-flex align-items-center">
-          <div>
-              <h4 class="card-title">Top Selling Products</h4>
-              <h5 class="card-subtitle">Overview of Top Selling Items</h5>
-          </div>
-          <div class="ml-auto">
-              <div class="dl">
-                  <select class="custom-select">
-                      <option value="0" selected>Monthly</option>
-                      <option value="1">Daily</option>
-                      <option value="2">Weekly</option>
-                      <option value="3">Yearly</option>
-                  </select>
-              </div>
-          </div>
-      </div>
-      <!-- title -->
-  </div>
-  <div class="table-responsive">
-      <table class="table v-middle">
-          <thead>
-              <tr class="bg-light">
-                  <th class="border-top-0">Products</th>
-                  <th class="border-top-0">License</th>
-                  <th class="border-top-0">Support Agent</th>
-                  <th class="border-top-0">Technology</th>
-                  <th class="border-top-0">Tickets</th>
-                  <th class="border-top-0">Sales</th>
-                  <th class="border-top-0">Earnings</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>
-                      <div class="d-flex align-items-center">
-                          <div class="m-r-10">
-                              <a class="btn btn-circle btn-info text-white">EA</a>
-                          </div>
-                          <div class="">
-                              <h4 class="m-b-0 font-16">Elite Admin</h4>
-                          </div>
-                      </div>
-                  </td>
-                  <td>Single Use</td>
-                  <td>John Doe</td>
-                  <td>
-                      <label class="label label-danger">Angular</label>
-                  </td>
-                  <td>46</td>
-                  <td>356</td>
-                  <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <div class="d-flex align-items-center">
-                          <div class="m-r-10">
-                              <a class="btn btn-circle btn-orange text-white">MA</a>
-                          </div>
-                          <div class="">
-                              <h4 class="m-b-0 font-16">Monster Admin</h4>
-                          </div>
-                      </div>
-                  </td>
-                  <td>Single Use</td>
-                  <td>Venessa Fern</td>
-                  <td>
-                      <label class="label label-info">Vue Js</label>
-                  </td>
-                  <td>46</td>
-                  <td>356</td>
-                  <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <div class="d-flex align-items-center">
-                          <div class="m-r-10">
-                              <a class="btn btn-circle btn-success text-white">MP</a>
-                          </div>
-                          <div class="">
-                              <h4 class="m-b-0 font-16">Material Pro Admin</h4>
-                          </div>
-                      </div>
-                  </td>
-                  <td>Single Use</td>
-                  <td>John Doe</td>
-                  <td>
-                      <label class="label label-success">Bootstrap</label>
-                  </td>
-                  <td>46</td>
-                  <td>356</td>
-                  <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <div class="d-flex align-items-center">
-                          <div class="m-r-10">
-                              <a class="btn btn-circle btn-purple text-white">AA</a>
-                          </div>
-                          <div class="">
-                              <h4 class="m-b-0 font-16">Ample Admin</h4>
-                          </div>
-                      </div>
-                  </td>
-                  <td>Single Use</td>
-                  <td>John Doe</td>
-                  <td>
-                      <label class="label label-purple">React</label>
-                  </td>
-                  <td>46</td>
-                  <td>356</td>
-                  <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
+    <!-- <div class="card-body">
+        <div class="d-md-flex align-items-center">
+            
+            <div class="ml-auto">
+                <div class="dl">
+                    <select class="custom-select">
+                        <option value="0" selected>Monthly</option>
+                        <option value="1">Daily</option>
+                        <option value="2">Weekly</option>
+                        <option value="3">Yearly</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"></div></label>
+
+    <div class="table-responsive">
+        <table class="table v-middle">
+            <thead>
+                <tr class="bg-light">
+                    <th class="border-top-0">Products</th>
+                    <th class="border-top-0">License</th>
+                    <th class="border-top-0">Support Agent</th>
+                    <th class="border-top-0">Technology</th>
+                    <th class="border-top-0">Tickets</th>
+                    <th class="border-top-0">Sales</th>
+                    <th class="border-top-0">Earnings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let device of devices" (click)="openVerticallyCentered(content3,device)">
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="m-r-10">
+                                <a class="btn btn-circle btn-info text-white">EA</a>
+                            </div>
+                            <div class="">
+                                <h4 class="m-b-0 font-16">{{device.cat_ref}}</h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Single Use</td>
+                    <td>{{device.owner.name}}</td>
+                    <td>
+                        <label class="label label-danger">{{device.is_lost}}</label>
+                    </td>
+                    <td>{{device.owner.website}}</td>
+                    <td>356</td>
+                    <td>
+                        <h5 class="m-b-0">{{device.owner.email}}</h5>
+                    </td>
+                </tr>
+                
+               
+            </tbody>
+        </table>
+    </div>
 </div>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content3)">Modal vertically
+    centered</button>
+
+<ng-template #content3 let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="">
+            <div class="">
+               
+                <ngb-tabset #t="ngbTabset">
+                    <ngb-tab id="tab-selectbyid1" title="Simple">
+                        <ng-template ngbTabContent>
+                                <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card card-body">
+        
+                                                <form class="form-horizontal m-t-30">
+                                                    <div class="form-group">
+                                                        <label>Name
+                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                        </label>
+                                                        <input type="text" class="form-control" value="George deo...">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email
+                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                        </label>
+                                                        <input type="text" class="form-control" value="George deo...">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="example-email">Mobile No
+                                                            <!-- <span class="help"> e.g. "example@gmail.com"</span> -->
+                                                        </label>
+                                                        <input type="email" id="example-email" name="example-email"
+                                                            class="form-control" placeholder="Email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="password" class="form-control" value="password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Website</label>
+                                                        <input type="text" class="form-control" placeholder="placeholder">
+                                                    </div>
+        
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>  
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab id="tab-selectbyid2">
+                        <ng-template ngbTabTitle>Lost data</ng-template>
+                        <ng-template ngbTabContent>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card card-body">
+
+                                        <form class="form-horizontal m-t-30" [formGroup]="lostForm" novalida>
+                                            <div class="form-group">
+                                                <label>Name
+                                                    <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                </label>
+                                                <input type="text" class="form-control"  formControlName="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email
+                                                    <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                </label>
+                                                <input type="text" class="form-control" value="George deo...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="example-email">Mobile No
+                                                    <!-- <span class="help"> e.g. "example@gmail.com"</span> -->
+                                                </label>
+                                                <input type="email" id="example-email" name="example-email"
+                                                    class="form-control" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="password" class="form-control" value="password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Website</label>
+                                                <input type="text" class="form-control" placeholder="placeholder">
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>

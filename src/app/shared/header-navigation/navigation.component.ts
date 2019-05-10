@@ -6,6 +6,8 @@ import {
   NgbCarouselConfig
 } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { SharedserviceService } from '../../service/sharedservice.service';
+import { Router } from '@angular/router';
 declare var $: any;
 
 @Component({
@@ -18,8 +20,53 @@ export class NavigationComponent implements AfterViewInit {
   public config: PerfectScrollbarConfigInterface = {};
 
   public showSearch = false;
+  public profiledata: any;
+  baseurl = 'http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/'
+  public display_image: String = "";
+  imgid: any;
+  name:'';
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private SharedService: SharedserviceService, private router: Router,) {
+
+    this.SharedService.profiledata.subscribe(profiledata => {
+      console.log('page ', profiledata);
+
+
+      if (this.isEmpty(profiledata)) {
+
+      } 
+      else {
+        this.profiledata = profiledata.result;
+        this.name=this.profiledata.name;
+          console.log(this.profiledata)
+        if (this.profiledata.imageId != null) {
+          this.imgid = this.profiledata.imageId._id;
+          this.getimage();
+        }
+
+      }
+
+    });
+
+
+  }
+
+
+  isEmpty(obj) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+  }
+  getimage() {
+
+    if (this.imgid) {
+      this.display_image = this.baseurl + 'file/getImage?imageId=' + this.imgid;
+      console.log('dscdsvcsdv', this.display_image);
+    }
+  }
+
 
   // This is for Notifications
   notifications: Object[] = [
@@ -85,5 +132,12 @@ export class NavigationComponent implements AfterViewInit {
     }
   ];
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+
+  }
+  logout(){
+    console.log('logout')
+    this.router.navigateByUrl('');
+    localStorage.clear();
+  }
 }
