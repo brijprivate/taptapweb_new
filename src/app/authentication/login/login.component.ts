@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { SeriveService } from '../../service/serive.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +12,19 @@ export class LoginComponent {
 
   public userFormErrors: any;
   public userForm: FormGroup;
-  public submitted:boolean=false;
-  public loader: boolean ;
-  
+  public submitted: boolean = false;
+  public loader: boolean = true;
+
   loginform = true;
   recoverform = false;
-  constructor(private formBuilder: FormBuilder, public api:SeriveService, private router: Router) { 
-       /******************ERRORS OF userForm ********************** */
-       this.userFormErrors = {
-        email: {},
-        password: {}
-      };
-      /****************************** ENDS **************************************** */
-  
+  constructor(private formBuilder: FormBuilder, public api: SeriveService, private router: Router, private toastr: ToastrService, ) {
+    /******************ERRORS OF userForm ********************** */
+    this.userFormErrors = {
+      email: {},
+      password: {}
+    };
+    /****************************** ENDS **************************************** */
+
   }
 
 
@@ -43,67 +44,73 @@ export class LoginComponent {
 
 
   /******************************IT CATCHES ALL CHANGES IN FORM******************/
-onuserFormValuesChanged() {
-  for (const field in this.userFormErrors) {
-    if (!this.userFormErrors.hasOwnProperty(field)) {
-      continue;
-    }
-    // Clear previous errors
-    this.userFormErrors[field] = {};
-    // Get the control
-    const control = this.userForm.get(field);
+  onuserFormValuesChanged() {
+    for (const field in this.userFormErrors) {
+      if (!this.userFormErrors.hasOwnProperty(field)) {
+        continue;
+      }
+      // Clear previous errors
+      this.userFormErrors[field] = {};
+      // Get the control
+      const control = this.userForm.get(field);
 
-    if (control && control.dirty && !control.valid) {
-      this.userFormErrors[field] = control.errors;
+      if (control && control.dirty && !control.valid) {
+        this.userFormErrors[field] = control.errors;
+      }
     }
   }
-}
-    /****************************** ENDS **************************************** */
+  /****************************** ENDS **************************************** */
 
 
 
-    /***********************LOGIN FORM ***************************** */
-    createLoginForm() {
-      return this.formBuilder.group({
-        email: ['',[ Validators.required,Validators.email]],
-        password: ['', Validators.required]
-       
-      });
-    }
-    /****************************** ENDS **************************************** */
-    /*************************LOGIN ********************** */
-    login(){
-   let something:any;
-      console.log(this.userForm.value);
-      this.submitted=true;
-      this.loader = true;
-      if(this.userForm.valid){  
-        this.submitted=false;
-        let data={
-          email:this.userForm.value.email,
-          password:this.userForm.value.password
-        }
-        this.api.login(data).subscribe(value=>{
-          // this.toastr.success('Welcome!', 'Successfully Logged In'),
-          console.log('login', value);
-          something=value
-          console.log('login', something.user._id);
-          localStorage.setItem('userid', something.user._id);
-          this.router.navigateByUrl('/starter');
-          this.loader=false;
-        },
-        err=>{
-          console.log('err',err.error)
-          this.loader = false;
-          alert('something went wrong');
-        })
+  /***********************LOGIN FORM ***************************** */
+  createLoginForm() {
+    return this.formBuilder.group({
     
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+
+
+    });
+  }
+  /****************************** ENDS **************************************** */
+  /*************************LOGIN ********************** */
+  login() {
+    this.loader = true;
+    let something: any;
+    console.log(this.userForm.value);
+    this.submitted = true;
+    this.loader = true;
+    if (this.userForm.valid) {
+      this.submitted = false;
+      let data = {
+        email: this.userForm.value.email,
+        password: this.userForm.value.password
       }
-      else{
+      this.api.login(data).subscribe(value => {
+        // this.toastr.success('Welcome!', 'Successfully Logged In'),
+
+        something = value
+
+        localStorage.setItem('userid', something.user._id);
+        this.toastr.success('You are awesome!', 'Success!');
         this.loader = false;
-      }
-    
+        this.router.navigateByUrl('/component/homepage');
+
+      },
+        err => {
+          console.log('err', err.error.message);
+          this.toastr.error('Oops!', err.error.message);
+          this.loader = false;
+
+        })
+
     }
-        /****************************** ENDS **************************************** */
-    
+    else {
+      this.loader = false;
+    }
+
+  }
+  /****************************** ENDS **************************************** */
+
 }

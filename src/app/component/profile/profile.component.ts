@@ -11,7 +11,7 @@ import { SeriveService } from '../../service/serive.service';
 })
 export class ProfileComponent implements OnInit {
 
-  public userFormErrors: any;
+  public profileFormErrors: any;
   public profileForm: FormGroup;
   public submitted: boolean = false;
   public loader: boolean;
@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   public showSearch = false;
   public profiledata: any;
   baseurl = 'http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/'
-  public display_image: String = "";
+  public display_image: String = "https://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png";
   imgid: any;
   name = '';
   address = ''
@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
   email: any;
 
   constructor(private SharedService: SharedserviceService, private formBuilder: FormBuilder, public api: SeriveService, private router: Router) {
-    this.userFormErrors = {
+    this.profileFormErrors = {
       name: {},
       address: {},
       city: {},
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
 
 
       if (this.isEmpty(profiledata)) {
-
+        console.log('empty')
       }
       else {
         this.profiledata = profiledata.result;
@@ -51,46 +51,45 @@ export class ProfileComponent implements OnInit {
         console.log(this.profiledata)
         if (this.profiledata.imageId != null) {
           this.imgid = this.profiledata.imageId._id;
-          this.name = this.profiledata.name;
-          this.address = this.profiledata.address;
-          this.city = this.profiledata.city;
-          this.zip = this.profiledata.zip;
-          this.country = this.profiledata.country;
-          this.website = this.profiledata.website;
-          this.email = this.profiledata.email
-          this.getimage();
-          this.profileForm = this.createLoginForm()
-          this.profileForm.valueChanges.subscribe(() => {
-            this.onuserFormValuesChanged();
-          });
-          console.log(this.profileForm);
+          
         }
-
+        this.name = this.profiledata.name;
+        this.address = this.profiledata.address;
+        this.city = this.profiledata.city;
+        this.zip = this.profiledata.zip;
+        this.country = this.profiledata.country;
+        this.website = this.profiledata.website;
+        this.email = this.profiledata.email
       }
-
+      console.log(this.name,this.email)
+      this.profileForm = this.createProfileForm()
+      this.profileForm.valueChanges.subscribe(() => {
+        this.onprofileFormValuesChanged();
+      });
+      this.getimage();
     });
   }
 
   ngOnInit() {
-
+   
   }
 
 
 
 
   /******************************IT CATCHES ALL CHANGES IN FORM******************/
-  onuserFormValuesChanged() {
-    for (const field in this.userFormErrors) {
-      if (!this.userFormErrors.hasOwnProperty(field)) {
+  onprofileFormValuesChanged() {
+    for (const field in this.profileFormErrors) {
+      if (!this.profileFormErrors.hasOwnProperty(field)) {
         continue;
       }
       // Clear previous errors
-      this.userFormErrors[field] = {};
+      this.profileFormErrors[field] = {};
       // Get the control
       const control = this.profileForm.get(field);
 
       if (control && control.dirty && !control.valid) {
-        this.userFormErrors[field] = control.errors;
+        this.profileFormErrors[field] = control.errors;
       }
     }
   }
@@ -99,7 +98,7 @@ export class ProfileComponent implements OnInit {
 
 
   /***********************LOGIN FORM ***************************** */
-  createLoginForm() {
+  createProfileForm() {
     console.log(this.profileForm);
     return this.formBuilder.group({
       name: [this.name, [Validators.required]],
@@ -184,6 +183,7 @@ export class ProfileComponent implements OnInit {
     },
       err => {
         console.log(err);
+        // this.display_image = event.target.result;
       })
 
 

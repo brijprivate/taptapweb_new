@@ -15,6 +15,11 @@ import { SearchComponent } from './search/search.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { TimeComponent } from './time/time.component';
 import { MilageComponent } from './milage/milage.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { HelpComponent } from './help/help.component';
+// import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 
 @NgModule({
   imports: [
@@ -23,7 +28,8 @@ import { MilageComponent } from './milage/milage.component';
     FormsModule,
     ReactiveFormsModule,
     JsonpModule,
-    NgbModule
+    NgbModule,
+    // SlickCarouselModule
   ],
   declarations: [
    
@@ -39,7 +45,13 @@ import { MilageComponent } from './milage/milage.component';
    
     TimeComponent,
    
-    MilageComponent
+    MilageComponent,
+   
+    AboutComponent,
+   
+    ContactComponent,
+   
+    HelpComponent
   ]
 })
 export class ComponentsModule { }

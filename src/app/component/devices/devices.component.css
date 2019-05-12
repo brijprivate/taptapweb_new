@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ca2222;
+  background-color: #2ab934;
   -webkit-transition: .4s;
   transition: .4s;
    border-radius: 15px;
@@ -35,7 +35,7 @@
 }
 
 input:checked + .slider {
-  background-color: #2ab934;
+  background-color: #ca2222;
 }
 
 input:focus + .slider {
@@ -51,7 +51,7 @@ input:checked + .slider:before {
 /*------ ADDED CSS ---------*/
 .slider:after
 {
- content:'OFF';
+ content:'InUse';
  color: white;
  display: block;
  position: absolute;
@@ -64,6 +64,51 @@ input:checked + .slider:before {
 
 input:checked + .slider:after
 {  
-  content:'ON';
+  content:'Lost';
   left: 15px
+}
+
+
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 0 1em 0;
+  border-top: none;
+}
+
+img.modelimg {
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 1px solid #63a5eb;
+}
+.card{
+  margin-bottom: 0;
+  border-width: 0px 1px 1px 1px;
+}
+
+
+
+
+
+.buttons {
+  text-align: center;
+  margin-top: 6px;
+}
+.buttons button {
+  background: transparent;
+  border: 1px solid #222;
+  border-radius: 4px;
+  color: #222;
+  width: 35%;
+  margin: 0 11px;
+  height: 33px;
+  font-weight: 600;
+}
+
+ngb-tabset ul li {
+  width: 50%;
 }

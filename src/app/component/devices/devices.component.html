@@ -14,7 +14,6 @@
             </div>
         </div>
     </div> -->
-    <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"></div></label>
 
     <div class="table-responsive">
         <table class="table v-middle">
@@ -30,13 +29,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let device of devices" (click)="openVerticallyCentered(content3,device)">
+                <tr *ngFor="let device of devices" >
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="m-r-10">
                                 <a class="btn btn-circle btn-info text-white">EA</a>
                             </div>
-                            <div class="">
+                            <div class="" (click)="openVerticallyCentered(content3,device)">
                                 <h4 class="m-b-0 font-16">{{device.cat_ref}}</h4>
                             </div>
                         </div>
@@ -44,7 +43,8 @@
                     <td>Single Use</td>
                     <td>{{device.owner.name}}</td>
                     <td>
-                        <label class="label label-danger">{{device.is_lost}}</label>
+                        <label class="label">{{device.is_lost}}     <label class="switch"><input type="checkbox" id="togBtn"><div class="slider round"></div></label>
+                    </label>
                     </td>
                     <td>{{device.owner.website}}</td>
                     <td>356</td>
@@ -58,8 +58,7 @@
         </table>
     </div>
 </div>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content3)">Modal vertically
-    centered</button>
+
 
 <ng-template #content3 let-modal>
     <div class="modal-header">
@@ -73,39 +72,52 @@
             <div class="">
                
                 <ngb-tabset #t="ngbTabset">
-                    <ngb-tab id="tab-selectbyid1" title="Simple">
+                    <ngb-tab id="tab-selectbyid1"  title="Basic Info">
                         <ng-template ngbTabContent>
-                                <div class="row">
-                                        <div class="col-sm-12">
+                                <div class="">
+                                        <div class=" ">
                                             <div class="card card-body">
-        
+                                                    <img class="modelimg" src="../../../assets/images/gallery/chair.jpg" alt="">
+
                                                 <form class="form-horizontal m-t-30">
-                                                    <div class="form-group">
-                                                        <label>Name
-                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
-                                                        </label>
-                                                        <input type="text" class="form-control" value="George deo...">
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                        <label>Name
+                                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                                        </label>
+                                                                        <input type="text" class="form-control" value="George deo...">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Email
+                                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                                        </label>
+                                                                        <input type="text" class="form-control" value="George deo...">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="example-email">Mobile No
+                                                                            <!-- <span class="help"> e.g. "example@gmail.com"</span> -->
+                                                                        </label>
+                                                                        <input type="email" id="example-email" name="example-email"
+                                                                            class="form-control" placeholder="Email">
+                                                                    </div>
+
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                        <label>Address</label>
+                                                                        <input type="password" class="form-control" value="password">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Website</label>
+                                                                        <input type="text" class="form-control" placeholder="placeholder">
+                                                                    </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Email
-                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
-                                                        </label>
-                                                        <input type="text" class="form-control" value="George deo...">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="example-email">Mobile No
-                                                            <!-- <span class="help"> e.g. "example@gmail.com"</span> -->
-                                                        </label>
-                                                        <input type="email" id="example-email" name="example-email"
-                                                            class="form-control" placeholder="Email">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <input type="password" class="form-control" value="password">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Website</label>
-                                                        <input type="text" class="form-control" placeholder="placeholder">
+                                                   
+                                                    <div class="buttons">
+                                                        <button>Save</button><button>Cancel</button>
                                                     </div>
         
                                                 </form>
@@ -114,42 +126,51 @@
                                     </div>  
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab id="tab-selectbyid2">
-                        <ng-template ngbTabTitle>Lost data</ng-template>
+                    <ngb-tab id="tab-selectbyid2" >
+                        <ng-template ngbTabTitle >Lost data</ng-template>
                         <ng-template ngbTabContent>
-                            <div class="row">
-                                <div class="col-sm-12">
+                            <div class="">
+                                <div class="">
                                     <div class="card card-body">
-
+                                        <img class="modelimg" src="../../../assets/images/gallery/chair.jpg" alt="">
                                         <form class="form-horizontal m-t-30" [formGroup]="lostForm" novalida>
-                                            <div class="form-group">
-                                                <label>Name
-                                                    <!-- <span class="help"> e.g. "George deo"</span> -->
-                                                </label>
-                                                <input type="text" class="form-control"  formControlName="email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email
-                                                    <!-- <span class="help"> e.g. "George deo"</span> -->
-                                                </label>
-                                                <input type="text" class="form-control" value="George deo...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-email">Mobile No
-                                                    <!-- <span class="help"> e.g. "example@gmail.com"</span> -->
-                                                </label>
-                                                <input type="email" id="example-email" name="example-email"
-                                                    class="form-control" placeholder="Email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="password" class="form-control" value="password">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Website</label>
-                                                <input type="text" class="form-control" placeholder="placeholder">
-                                            </div>
+                                                <div class="row">
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                        <label>Name
+                                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                                        </label>
+                                                                        <input type="text" class="form-control" value="George deo...">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Email
+                                                                            <!-- <span class="help"> e.g. "George deo"</span> -->
+                                                                        </label>
+                                                                        <input type="text" class="form-control" value="George deo...">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="example-email">Mobile No
+                                                                            <!-- <span class="help"> e.g. "example@gmail.com"</span> -->
+                                                                        </label>
+                                                                        <input type="email" id="example-email" name="example-email"
+                                                                            class="form-control" placeholder="Email">
+                                                                    </div>
 
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                        <label>Address</label>
+                                                                        <input type="password" class="form-control" value="password">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Website</label>
+                                                                        <input type="text" class="form-control" placeholder="placeholder">
+                                                                    </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="buttons">
+                                                            <button>Save</button><button (click)="modal.close('Close click')">Cancel</button>
+                                                        </div>
                                         </form>
                                     </div>
                                 </div>
@@ -162,7 +183,7 @@
             </div>
         </div>
     </div>
-    <div class="modal-footer">
+    <!-- <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
+    </div> -->
 </ng-template>

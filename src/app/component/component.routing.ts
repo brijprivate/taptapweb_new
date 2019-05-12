@@ -8,6 +8,9 @@ import { TimeComponent } from './time/time.component';
 import { SearchComponent } from './search/search.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HelpComponent } from './help/help.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 export const ComponentsRoutes: Routes = [
@@ -44,9 +47,9 @@ export const ComponentsRoutes: Routes = [
         data: {
           title: 'Milage',
           urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Pagination' }
+            { title: 'Milage', url: '/Milage' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
           ]
         }
       },
@@ -56,9 +59,9 @@ export const ComponentsRoutes: Routes = [
         data: {
           title: 'Search',
           urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Pagination' }
+            { title: 'Dashboard', url: '/Search' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
           ]
         }
       },
@@ -68,9 +71,9 @@ export const ComponentsRoutes: Routes = [
         data: {
           title: 'Favourite',
           urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Pagination' }
+            { title: 'Favourite', url: '/Favourite' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
           ]
         }
       },
@@ -80,9 +83,9 @@ export const ComponentsRoutes: Routes = [
         data: {
           title: 'Devices',
           urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Pagination' }
+            { title: 'Devices', url: '/Devices' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
           ]
         }
       },
@@ -92,13 +95,48 @@ export const ComponentsRoutes: Routes = [
         data: {
           title: 'Profile',
           urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'ngComponent' },
-            { title: 'Pagination' }
+            { title: 'Profile', url: '/Profile' },
+            // { title: 'Pagination' }
           ]
         }
       },
 
+      {
+        path: 'help',
+        component: HelpComponent,
+        data: {
+          title: 'Help',
+          urls: [
+            { title: 'Help', url: '/Help' },
+            
+            // { title: 'Pagiation' }
+          ]
+        }
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        data: {
+          title: 'About',
+          urls: [
+            { title: 'About', url: '/about' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
+          ]
+        }
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+        data: {
+          title: 'Contact',
+          urls: [
+            { title: 'Contact', url: '/Contact' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
+          ]
+        }
+      },
       
     ]
   }

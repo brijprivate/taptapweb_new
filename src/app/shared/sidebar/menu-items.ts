@@ -62,14 +62,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-  {
-    path: '/component/favourite',
-    title: 'Favourite',
-    icon: 'icon-Administrator',
-    class: '',
-    extralink: false,
-    submenu: []
-  },
+  
 
   // {
   //   path: '',
@@ -164,6 +157,55 @@ export const ROUTES: RouteInfo[] = [
      
     ]
   },
+  {
+    path: '/component/favourite',
+    title: 'Favourite',
+    icon: 'icon-Administrator',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
+
+
+
+  {
+    path: '',
+    title: 'More',
+    icon: 'icon-Paint-Brush',
+    class: 'has-arrow',
+    extralink: false,
+    submenu: [
+      
+      {
+        path: '/component/about',
+        title: 'About',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/component/help',
+        title: 'Help',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/component/contact',
+        title: 'Contact',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+    
+     
+    ]
+  },
+
+
   // {
   //   path: '',
   //   title: 'Menu Levels',

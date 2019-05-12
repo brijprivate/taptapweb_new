@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SeriveService } from '../../service/serive.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -15,11 +16,12 @@ export class SignupComponent {
   public submitted: boolean = false;
   public loader: boolean;
   code: string;
-  constructor(private formBuilder: FormBuilder, public api: SeriveService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, public api: SeriveService, private router: Router,private toastr: ToastrService,) {
 
     this.userFormErrors = {
       email: {},
-      password: {}
+      password: {},
+      name:{}
     };
   }
 
@@ -37,7 +39,7 @@ export class SignupComponent {
 
 
 
-    
+
   }
 
 
@@ -66,8 +68,8 @@ export class SignupComponent {
     return this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      name: ['', [Validators.required]],
-      role: 'user',
+      name: ['', Validators.required],
+      
 
     });
   }
@@ -82,16 +84,25 @@ export class SignupComponent {
       this.submitted = false;
       let data = {
         email: this.userForm.value.email,
-        password: this.userForm.value.password
+        password: this.userForm.value.password,
+        name: this.userForm.value.name,
+        role: 'user',
+
       }
       this.api.register(data).subscribe(value => {
         // this.toastr.success('Welcome!', 'Successfully Logged In'),
         console.log('login', value);
         something = value
+        console.log(something.message)
+        if(something.message=="User already registered"){
+          this.toastr.error('Oops!', something.message);
+          this.userForm.reset()
+        }
+        else{
+          this.showRecoverForm();
+        }
         
-        // this.router.navigateByUrl('/starter');
-        this.showRecoverForm();
-        this.loader = false;
+        // this.loader = false;
       },
         err => {
           console.log('err', err.error)
@@ -110,22 +121,24 @@ export class SignupComponent {
 
 
   verify() {
-    let something:any;
-    let data={
+    let something: any;
+    let data = {
       email: this.userForm.value.email,
-      code:this.code
+      code: this.code
     }
     console.log(data);
     this.api.verify(data).subscribe(result => {
       // this.toastr.success('Welcome!', 'Successfully Registered'),
       console.log('verify', result);
       console.log('userid', something.user._id);
-        localStorage.setItem('userid', something.user._id);
-      this.router.navigateByUrl('/starter');
+      localStorage.setItem('userid', something.user._id);
+      this.router.navigateByUrl('/component/homepage');
 
     },
       err => {
-        console.log(err)
+        console.log(err);
+        this.toastr.error('Oops!', 'Wrong OTP');
+        this.code='';
       })
 
 

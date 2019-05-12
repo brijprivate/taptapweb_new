@@ -14,6 +14,7 @@ import { Signup2Component } from './signup2/signup2.component';
 import { AuthenticationRoutes } from './authentication.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forChild(AuthenticationRoutes),
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
   ],
   declarations: [
     NotfoundComponent,

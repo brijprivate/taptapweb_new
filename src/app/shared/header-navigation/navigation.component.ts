@@ -8,6 +8,7 @@ import {
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { SharedserviceService } from '../../service/sharedservice.service';
 import { Router } from '@angular/router';
+import { SeriveService } from '../../service/serive.service';
 declare var $: any;
 
 @Component({
@@ -24,9 +25,9 @@ export class NavigationComponent implements AfterViewInit {
   baseurl = 'http://ec2-18-225-10-142.us-east-2.compute.amazonaws.com:5450/'
   public display_image: String = "";
   imgid: any;
-  name:'';
+  name: '';
 
-  constructor(private modalService: NgbModal, private SharedService: SharedserviceService, private router: Router,) {
+  constructor(private modalService: NgbModal, private SharedService: SharedserviceService, private router: Router, public api: SeriveService) {
 
     this.SharedService.profiledata.subscribe(profiledata => {
       console.log('page ', profiledata);
@@ -34,11 +35,11 @@ export class NavigationComponent implements AfterViewInit {
 
       if (this.isEmpty(profiledata)) {
 
-      } 
+      }
       else {
         this.profiledata = profiledata.result;
-        this.name=this.profiledata.name;
-          console.log(this.profiledata)
+        this.name = this.profiledata.name;
+        console.log(this.profiledata)
         if (this.profiledata.imageId != null) {
           this.imgid = this.profiledata.imageId._id;
           this.getimage();
@@ -47,7 +48,7 @@ export class NavigationComponent implements AfterViewInit {
       }
 
     });
-
+    // this.getnotification();
 
   }
 
@@ -135,7 +136,15 @@ export class NavigationComponent implements AfterViewInit {
   ngAfterViewInit() {
 
   }
-  logout(){
+  getnotification() {
+    this.api.getnotifications().subscribe(result => {
+      console.log(result);
+    },
+      err => {
+        console.log(err)
+      })
+  }
+  logout() {
     console.log('logout')
     this.router.navigateByUrl('');
     localStorage.clear();

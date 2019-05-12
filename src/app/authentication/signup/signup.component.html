@@ -1,4 +1,5 @@
-<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center"
+    style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
     <div class="auth-box">
         <div [ngClass]="{'d-none': recoverform}">
             <div class="logo">
@@ -6,22 +7,38 @@
                 <h5 class="font-medium m-b-20">Sign Up to Admin</h5>
             </div>
             <!-- Form -->
-            <div class="row" >
+            <div class="row">
                 <div class="col-12">
-                    <form class="form-horizontal m-t-20"  [formGroup]="userForm" novalida>
+                    <form class="form-horizontal m-t-20" [formGroup]="userForm" novalida>
                         <div class="form-group row ">
                             <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Name" formControlName="name">
+                                <input class="form-control form-control-lg" type="text"  placeholder="Name"
+                                    formControlName="name">
+
+                                    <p class="error" style="position:absolute;top:100%; left:5px;     color: red;"
+                                [ngStyle]="{'font-size':'12px'}"
+                                *ngIf="userFormErrors.name.required || (userForm.controls.name.pristine && submitted)">
+                                Can't be empty</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Email" formControlName="email">
+                                <input class="form-control form-control-lg" type="text"  placeholder="Email"
+                                    formControlName="email">
+                                    <p class="error" style="position:absolute;top:100%; left:5px;    color: red;"
+                                [ngStyle]="{'font-size':'12px'}"
+                                *ngIf="userFormErrors.email.required ||userFormErrors.email.email || (userForm.controls.email.pristine && submitted)">
+                                PLease enter valid email</p>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="password" required=" " placeholder="Password" formControlName="password">
+                                <input class="form-control form-control-lg" type="password" 
+                                    placeholder="Password" formControlName="password">
+                                    <p class="error" style="position:absolute;top:100%; left:5px;     color: red;"
+                                    [ngStyle]="{'font-size':'12px'}"
+                                    *ngIf="userFormErrors.password.required || (userForm.controls.password.pristine && submitted)">
+                                    Can't be empty</p>
                             </div>
                         </div>
                         <!-- <div class="form-group row">
@@ -39,12 +56,14 @@
                         </div>
                         <div class="form-group text-center ">
                             <div class="col-xs-12 p-b-20 ">
-                                <button class="btn btn-block btn-lg btn-info " type="submit " (click)="signup()">SIGN UP</button>
+                                <button class="btn btn-block btn-lg btn-info " type="submit " (click)="signup()">Sign
+                                    up</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0 m-t-10 ">
                             <div class="col-sm-12 text-center ">
-                                Already have an account? <a href="#/authentication/login " class="text-info m-l-5 "><b>Sign In</b></a>
+                                Already have an account? <a href="#/authentication/login "
+                                    class="text-info m-l-5 "><b>Sign In</b></a>
                             </div>
                         </div>
                     </form>
@@ -63,13 +82,15 @@
                     <!-- email -->
                     <div class="form-group row">
                         <div class="col-12">
-                            <input class="form-control form-control-lg" type="email" required="" placeholder="Username" [(ngModel)]="code">
+                            <input class="form-control form-control-lg" type="email"  placeholder="OTP"
+                                [(ngModel)]="code">
                         </div>
                     </div>
                     <!-- pwd -->
                     <div class="row m-t-20">
                         <div class="col-12">
-                            <button class="btn btn-block btn-lg btn-danger" type="submit" name="action" (click)="verify()">Reset</button>
+                            <button class="btn btn-block btn-lg btn-info" type="submit" name="action"
+                                (click)="verify()">Register</button>
                         </div>
                     </div>
                 </div>
