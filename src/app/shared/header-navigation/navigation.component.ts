@@ -48,7 +48,7 @@ export class NavigationComponent implements AfterViewInit {
       }
 
     });
-    // this.getnotification();
+    this.getnotification();
 
   }
 
@@ -137,6 +137,7 @@ export class NavigationComponent implements AfterViewInit {
 
   }
   getnotification() {
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     this.api.getnotifications().subscribe(result => {
       console.log(result);
     },

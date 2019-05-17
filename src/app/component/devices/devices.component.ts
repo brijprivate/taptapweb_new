@@ -18,17 +18,32 @@ export class DevicesComponent implements OnInit {
   modeldata: any;
   public userFormErrors: any;
   public userForm: FormGroup;
+  public lostFormErrors: any;
+  public lostForm: FormGroup;
   public submitted: boolean = false;
   public loader: boolean;
+  check: boolean;
 
-  constructor(private router: Router, public api: SeriveService, private modalService: NgbModal, private formBuilder: FormBuilder, ) { }
+  constructor(private router: Router, public api: SeriveService, private modalService: NgbModal, private formBuilder: FormBuilder, ) {
+
+
+    this.lostFormErrors = {
+      email: {},
+      name: {},
+      phoneNumber: {}
+    };
+    this.userFormErrors = {
+      email: {},
+      address: {},
+      name: {},
+      website:{},
+      zip:{}
+    };
+  }
 
   ngOnInit() {
     this.getdevices();
-    this.userForm = this.createLoginForm()
-    this.userForm.valueChanges.subscribe(() => {
-      this.onuserFormValuesChanged();
-    });
+    
   }
   getdevices() {
     let something: any;
@@ -47,6 +62,18 @@ export class DevicesComponent implements OnInit {
   openVerticallyCentered(content3, device) {
     console.log(device);
     this.modeldata = device;
+    this.userForm = this.createLoginForm(device)
+    this.userForm.valueChanges.subscribe(() => {
+      this.onuserFormValuesChanged();
+    });
+
+
+    this.lostForm = this.createlostForm(device);
+    this.lostForm.valueChanges.subscribe(() => {
+      this.onlostFormValuesChanged();
+    });
+
+    
     this.modalService.open(content3, { centered: true, size: 'lg' });
   }
 
@@ -69,20 +96,97 @@ export class DevicesComponent implements OnInit {
       }
     }
   }
+
+
+
+  onlostFormValuesChanged() {
+    for (const field in this.userFormErrors) {
+      if (!this.userFormErrors.hasOwnProperty(field)) {
+        continue;
+      }
+      // Clear previous errors
+      this.userFormErrors[field] = {};
+      // Get the control
+      const control = this.userForm.get(field);
+
+      if (control && control.dirty && !control.valid) {
+        this.userFormErrors[field] = control.errors;
+      }
+    }
+  }
+
+
   /****************************** ENDS **************************************** */
 
 
 
   /***********************LOGIN FORM ***************************** */
-  createLoginForm() {
+  createLoginForm(device) {
     return this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: [device.owner.email, [Validators.required, Validators.email]],
+      address: [device.owner.address, [Validators.required]],
+      name: [device.owner.name, [Validators.required]],
+      website: [device.owner.website, [Validators.required]],
+      zip: [device.owner.zip, [Validators.required]],
+    });
+  }
+
+  createlostForm(device) {
+    return this.formBuilder.group({
+      email: [device.lost_info.email],
+      name: [device.lost_info.name],
+      phoneNumber: [device.lost_info.phoneNumber],
 
     });
   }
+
   /****************************** ENDS **************************************** */
-  /*************************LOGIN ********************** */
+  /************************* ********************** */
+
+
+  savelostdata() {
+    let something: any;
+    console.log(this.lostForm.value);
+    this.submitted = true;
+    this.loader = true;
+    if (this.lostForm.valid) {
+      this.submitted = false;
+      let lostdata = {
+        email: this.lostForm.value.email,
+        password: this.lostForm.value.password,
+        phoneNumber: this.lostForm.value.phoneNumber
+      }
+      let data={
+        deviceId:this.modeldata._id,
+        device_title:'na',
+        message:'a tag with no info',
+        is_lost:this.check,
+        lost_info:lostdata,
+
+      }
+      console.log(data);
+      this.api.updatelostinfo(data).subscribe(value => {
+        // this.toastr.success('Welcome!', 'Successfully Logged In'),
+        console.log(' lost device update', value);
+       
+        this.loader = false;
+      },
+        err => {
+          console.log('err', err.error)
+          this.loader = false;
+          alert('something went wrong');
+        })
+
+    }
+    else {
+      this.loader = false;
+    }
+    this.getdevices()
+  }
+
+
+
+
   login() {
     let something: any;
     console.log(this.userForm.value);
@@ -114,5 +218,24 @@ export class DevicesComponent implements OnInit {
       this.loader = false;
     }
 
+  }
+  checklost(check,device){
+    console.log(device);
+    this.modeldata = device;
+    this.check=check.currentTarget.checked;
+    this.userForm = this.createLoginForm(device)
+    this.userForm.valueChanges.subscribe(() => {
+      this.onuserFormValuesChanged();
+    });
+
+
+    this.lostForm = this.createlostForm(device);
+    this.lostForm.valueChanges.subscribe(() => {
+      this.onlostFormValuesChanged();
+    });
+    
+    
+    console.log(check.currentTarget.checked,'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+    this.savelostdata()
   }
 }

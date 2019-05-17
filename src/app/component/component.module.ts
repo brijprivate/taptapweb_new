@@ -18,6 +18,8 @@ import { MilageComponent } from './milage/milage.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
+import { FeedComponent } from './feed/feed.component';
+import { ShowComponent } from './show/show.component';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
@@ -51,7 +53,11 @@ import { HelpComponent } from './help/help.component';
    
     ContactComponent,
    
-    HelpComponent
+    HelpComponent,
+   
+    FeedComponent,
+   
+    ShowComponent
   ]
 })
 export class ComponentsModule { }

@@ -126,12 +126,62 @@ export class HomeComponent implements OnInit {
     jQuery(document).ready(function ($) {
 
       var xyz = function () {
-        var jssor_1_options = {
+        var jssor_2_options = {
           $AutoPlay: 1,
           $AutoPlaySteps: 1,
           $SlideDuration: 160,
           $SlideWidth: 200,
           $SlideSpacing: -1,
+          $ArrowNavigatorOptions: {
+            $Class: $JssorArrowNavigator$,
+            $Steps: 5
+          },
+          $BulletNavigatorOptions: {
+            $Class: $JssorBulletNavigator$
+          }
+        };
+
+        var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_2_options);
+
+        /*#region responsive code begin*/
+
+        var MAX_WIDTH = 980;
+
+        function ScaleSlider() {
+          var containerElement = jssor_2_slider.$Elmt.parentNode;
+          var containerWidth = containerElement.clientWidth;
+
+          if (containerWidth) {
+
+            var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+            jssor_2_slider.$ScaleWidth(expectedWidth);
+          }
+          else {
+            window.setTimeout(ScaleSlider, 30);
+          }
+        }
+
+        ScaleSlider();
+
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+      }
+      xyz();
+
+      /*#endregion responsive code end*/
+    });
+
+    jQuery(document).ready(function ($) {
+
+      var xyz = function () {
+        var jssor_1_options = {
+          $AutoPlay: 1,
+          $AutoPlaySteps: 1,
+          $SlideDuration: 160,
+          $SlideWidth: 100,
+          $SlideSpacing: 0,
           $ArrowNavigatorOptions: {
             $Class: $JssorArrowNavigator$,
             $Steps: 5
@@ -172,6 +222,5 @@ export class HomeComponent implements OnInit {
 
       /*#endregion responsive code end*/
     });
-
   }
 }

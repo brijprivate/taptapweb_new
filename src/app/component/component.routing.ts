@@ -11,6 +11,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { HelpComponent } from './help/help.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { FeedComponent } from './feed/feed.component';
+import { ShowComponent } from './show/show.component';
+
 
 
 export const ComponentsRoutes: Routes = [
@@ -132,6 +135,30 @@ export const ComponentsRoutes: Routes = [
           title: 'Contact',
           urls: [
             { title: 'Contact', url: '/Contact' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
+          ]
+        }
+      },
+      {
+        path: 'feed',
+        component: FeedComponent,
+        data: {
+          title: 'Feed',
+          urls: [
+            { title: 'Feed', url: '/Feed' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
+          ]
+        }
+      },
+      {
+        path: 'show',
+        component: ShowComponent,
+        data: {
+          title: 'Show',
+          urls: [
+            { title: 'Show', url: '/Show' },
             // { title: 'ngComponent' },
             // { title: 'Pagination' }
           ]

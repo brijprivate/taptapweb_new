@@ -166,7 +166,14 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
 
-
+  {
+    path: '/component/feed',
+    title: 'Feed',
+    icon: 'icon-Administrator',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
 
   {
     path: '',

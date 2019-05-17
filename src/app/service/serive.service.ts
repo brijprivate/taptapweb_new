@@ -59,10 +59,18 @@ export class SeriveService {
     return this.http.get(baseURL + 'milage/usermilage?userId=' + this.userid);
   }
   getnotifications() {
-    return this.http.get(baseURL + 'notifications/all?userId='+this.userid);
+    return this.http.get(baseURL + 'notifications/list?userId='+this.userid);
+  }
+  gettapdatabyuser(){
+    return this.http.get(baseURL + 'tapped/usertappedItems?userId='+this.userid);
+
   }
 
 
+  updatelostinfo(data){
+    return this.http.put(baseURL + 'device/updateDeviceInfo=' + (this.userid), data);
+
+  }
   // upload(file: any) {
   //   let _base = this;
   //   return new Promise(function (resolve, reject) {

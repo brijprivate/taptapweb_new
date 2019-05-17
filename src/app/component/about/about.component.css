@@ -13,8 +13,8 @@
 .pic
 {
   box-shadow: 6px 6px 7px #888888;
-  width:300px;
-  height:300px;
+  width:250px;
+  height:250px;
   position: relative;
   overflow: hidden;
   margin-top:100px;
@@ -46,13 +46,12 @@
 .box1
 {
   box-shadow: 6px 6px 7px #888888;
-  width:100px;
-  height:100px;
+  width: 75px;
+  height: 75px;
   position: relative;
   overflow: hidden;
-  margin-top:-124px;
-  margin-left:16px;
-  -ms-transform: rotate(45deg);
+  margin-top: -109px;
+  margin-left: 35px;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
@@ -73,15 +72,14 @@
 .box2
 {
   box-shadow: 6px 6px 7px #888888;
-  position: relative;
-  overflow: hidden;
-  width:194px;
-  height:99px;
-  margin-top:14px;
-  margin-left:78px;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+    position: relative;
+    overflow: hidden;
+    width: 172px;
+    height: 75px;
+    margin-top: 20px;
+    margin-left: 75px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 .box2:before
 {
@@ -101,12 +99,11 @@
 .social1
 {
   box-shadow: 6px 6px 7px #888888;
-  width:80px;
-  height:80px;
-  background-color:#3b5998;
-  margin-top:-57px;
-  margin-left:305px;
-  -ms-transform: rotate(45deg);
+  width: 75px;
+  height: 75px;
+  background-color: #3b5998;
+  margin-top: -42px;
+  margin-left: 280px;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
@@ -120,17 +117,17 @@
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   color:#ffffff;
+  font-family: FontAwesome;
 }
 
 .social2
 {
   box-shadow: 6px 6px 7px #888888;
-  width:80px;
-  height:80px;
-  background-color:#C73B6F;
-  margin-top:-142px;
-  margin-left:370px;
-  -ms-transform: rotate(45deg);
+  width: 75px;
+  height: 75px;
+  background-color: #C73B6F;
+  margin-top: -135px;
+  margin-left: 342px;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
@@ -148,14 +145,13 @@
 .social3
 {
   box-shadow: 6px 6px 7px #888888;
-  width:80px;
-  height:80px;
-  background-color:#000000;
-  margin-top:-143px;
-  margin-left:435px;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+    width: 75px;
+    height: 75px;
+    background-color: #000000;
+    margin-top: -132px;
+    margin-left: 400px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 .social3 > i
 {
@@ -179,9 +175,11 @@ p
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
-h2
+h3
 {
   font-family: 'Dancing Script', cursive;
+  margin-top: 2em;
+  
 }
 
 .contentHead
