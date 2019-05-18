@@ -20,6 +20,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
 import { FeedComponent } from './feed/feed.component';
 import { ShowComponent } from './show/show.component';
+import { TaphistoryComponent } from './taphistory/taphistory.component';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
@@ -57,7 +58,9 @@ import { ShowComponent } from './show/show.component';
    
     FeedComponent,
    
-    ShowComponent
+    ShowComponent,
+      
+    TaphistoryComponent
   ]
 })
 export class ComponentsModule { }

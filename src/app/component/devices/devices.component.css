@@ -92,7 +92,10 @@ img.modelimg {
 
 
 
-
+label {
+ margin-bottom: 0;
+ margin-top: 0.5rem;
+}
 
 .buttons {
   text-align: center;

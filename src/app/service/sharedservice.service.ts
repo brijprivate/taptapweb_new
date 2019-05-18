@@ -8,6 +8,9 @@ export class SharedserviceService {
   profiledata:BehaviorSubject<any> = new BehaviorSubject({});
   checks:BehaviorSubject<any> = new BehaviorSubject({});
 
+  tapdata:BehaviorSubject<any> = new BehaviorSubject({});
+
+
   constructor() { }
   profile(params){
     this.profiledata.next(params)  
@@ -17,4 +20,10 @@ export class SharedserviceService {
     this.checks.next(x)  
     console.log("profile data shared");
   }
+
+  taps(x){
+    this.tapdata.next(x)  
+    console.log("profile data shared");
+  }
+
 }

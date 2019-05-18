@@ -115,8 +115,9 @@ export class SidebarComponent implements OnInit {
 
   }
   logout(){
-    console.log('logout')
-    this.router.navigateByUrl('');
+    console.log('logout');
     localStorage.clear();
+    this.router.navigateByUrl('');
+   
   }
 }

@@ -37,7 +37,15 @@ export const ROUTES: RouteInfo[] = [
       
       {
         path: '/component/homepage',
-        title: 'homepage',
+        title: 'Home',
+        icon: '',
+        class: '',
+        extralink: false,
+        submenu: []
+      },
+      {
+        path: '/component/history',
+        title: 'Tap History',
         icon: '',
         class: '',
         extralink: false,

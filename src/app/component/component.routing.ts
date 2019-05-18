@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FeedComponent } from './feed/feed.component';
 import { ShowComponent } from './show/show.component';
+import { TaphistoryComponent } from './taphistory/taphistory.component';
 
 
 
@@ -128,6 +129,19 @@ export const ComponentsRoutes: Routes = [
           ]
         }
       },
+      {
+        path: 'history',
+        component: TaphistoryComponent,
+        data: {
+          title: 'history',
+          urls: [
+            { title: 'history', url: '/history' },
+            // { title: 'ngComponent' },
+            // { title: 'Pagination' }
+          ]
+        }
+      },
+
       {
         path: 'contact',
         component: ContactComponent,

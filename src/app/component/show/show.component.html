@@ -1,32 +1,446 @@
-<div class="card">
+<!-- fashion  -->
+
+<div class="card" *ngIf="type=='Fashion'">
     <!-- CAROUSEL -->
     <ngb-carousel>
         <ng-template ngbSlide>
-            <img class="card-img-top img-responsive" src="assets/images/big/img5.jpg" alt="Card image cap">
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
 
         </ng-template>
         <ng-template ngbSlide>
-            <img class="card-img-top img-responsive" src="assets/images/big/img5.jpg" alt="Card image cap">
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+       
+    </ngb-carousel>
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">Product Name: {{tapdata.fashionId.name}}</h3>
+        <p class="m-b-0 m-t-10"> Description: {{tapdata.fashionId.description}}</p>
+        <p class="m-b-0 m-t-10"> Product size: {{tapdata.fashionId.size}}</p>
+        <p class="m-b-0 m-t-10"> Product price: {{tapdata.fashionId.price}}</p>
+        <p class="m-b-0 m-t-10"> link to item: {{tapdata.fashionId.weblink}}</p>
+
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <button>-</button> <input type="text" [value]='tapdata.limit'><button>+</button>
+            <input type="text" placeholder="Enter UID"><button>+</button>
+            <div class="chip">
+                John Doe
+                <span class="closebtn" >&times;</span>
+              </div>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- general -->
+
+
+
+
+
+<div class="card" *ngIf="type=='General'">
+    <!-- CAROUSEL -->
+
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">weblink: {{tapdata.generalId.weblink}}</h3>
+        <p class="m-b-0 m-t-10">description{{tapdata.generalId.description}}</p>
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
+</div>
+
+
+
+
+
+
+<!--  conatcts-->
+
+
+
+
+
+
+<div class="card" *ngIf="type=='Contacts'">
+    <!-- CAROUSEL -->
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
 
         </ng-template>
         <ng-template ngbSlide>
-            <img class="card-img-top img-responsive" src="assets/images/big/img5.jpg" alt="Card image cap">
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
 
         </ng-template>
     </ngb-carousel>
     <!-- End CAROUSEL -->
 
-  <div class="card-body">
-      <div class="d-flex no-block align-items-center m-b-15">
-          <span>
-              <i class="ti-calendar"></i> 19 May 2018</span>
-          <div class="ml-auto">
-              <a href="javascript:void(0)" class="link">
-                  <i class="ti-comments"></i> 5 Comments</a>
-          </div>
-      </div>
-      <h3 class="font-normal">Featured Hydroflora Pots Garden &amp; Outdoors</h3>
-      <p class="m-b-0 m-t-10">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
-      <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
-  </div>
+    <div class="card-body">
+       
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascripPt:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">Name: {{tapdata.contactId.name}}</h3>
+        <h3 class="font-normal">location: {{tapdata.location}}</h3>
+
+
+        <p class="m-b-0 m-t-10">company:{{tapdata.contactId.company}}</p>
+        <p class="m-b-0 m-t-10">address:{{tapdata.contactId.address}}</p>
+        <p class="m-b-0 m-t-10">telephoneNumber:{{tapdata.contactId.telephoneNumber}}</p>
+        <p class="m-b-0 m-t-10">email:{{tapdata.contactId.email}}</p>
+        <p class="m-b-0 m-t-10">link:{{tapdata.contactId.link}}</p>
+
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- "events" -->
+
+
+
+
+
+<div class="card" *ngIf="type=='Event'">
+    <!-- CAROUSEL -->
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+    </ngb-carousel>
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">event_title: {{tapdata.eventId.event_title}}</h3>
+        <p class="m-b-0 m-t-10">description{{tapdata.eventId.description}}</p>
+        <p class="m-b-0 m-t-10">location{{tapdata.eventId.location}}</p>
+        <p class="m-b-0 m-t-10">startTime{{tapdata.eventId.startTime}}</p>
+
+        <p class="m-b-0 m-t-10">endTime{{tapdata.eventId.endTime}}</p>
+
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
+</div>
+
+
+<!-- "Business" -->
+
+
+
+
+
+<div class="card" *ngIf="type=='Business'">
+    <!-- CAROUSEL -->
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+    </ngb-carousel>
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">Name: {{tapdata.name}}</h3>
+        <p class="m-b-0 m-t-10">telephoneNumber{{tapdata.businessId.telephoneNumber}}</p>
+
+        <p class="m-b-0 m-t-10">address{{tapdata.businessId.address}}</p>
+
+        <p class="m-b-0 m-t-10">email{{tapdata.businessId.email}}</p>
+
+        <p class="m-b-0 m-t-10">webLink{{tapdata.businessId.webLink}}</p>
+
+
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- "Verification" -->
+
+
+
+<div class="card" *ngIf="type=='Verification'">
+    <!-- CAROUSEL -->
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+    </ngb-carousel>
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">Name: {{tapdata.varificationId.name}}</h3>
+        <p class="m-b-0 m-t-10">{{tapdata.varificationId.description}}</p>
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
+</div>
+
+
+
+<!-- "Sports" -->
+
+
+<div class="card" *ngIf="type=='Sports'">
+    <!-- CAROUSEL -->
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+    </ngb-carousel>
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">sport_name: {{tapdata.sportId.sport_name}}</h3>
+        <p class="m-b-0 m-t-10">club_name{{tapdata.sportId.club_name}}</p>
+        <p class="m-b-0 m-t-10">description{{tapdata.sportId.description}}</p>
+
+        <p class="m-b-0 m-t-10">webLink{{tapdata.sportId.webLink}}</p>
+
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--  Groceries-->
+
+
+<div class="card" *ngIf="type=='Groceries'">
+    <!-- CAROUSEL -->
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+        <ng-template ngbSlide>
+            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+        </ng-template>
+    </ngb-carousel>
+    <!-- End CAROUSEL -->
+
+    <div class="card-body">
+        <div class="d-flex no-block align-items-center m-b-15">
+            <span>
+                <i class="ti-calendar"></i> 19 May 2018</span>
+            <div class="ml-auto">
+                <a href="javascript:void(0)" class="link">
+                    <i class="ti-comments"></i> 5 Comments</a>
+            </div>
+        </div>
+        {{tapdata.purpose}}
+        <h3 class="font-normal">product_name: {{tapdata.groceryId.product_name}}</h3>
+        <p class="m-b-0 m-t-10">quantity{{tapdata.groceryId.quantity}}</p>
+        <p class="m-b-0 m-t-10">price{{tapdata.groceryId.price}}</p>
+
+        <p class="m-b-0 m-t-10">description{{tapdata.groceryId.description}}</p>
+
+        <p class="m-b-0 m-t-10">webLink{{tapdata.groceryId.webLink}}</p>
+
+        store data 
+        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
+        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
+        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+        <div>
+            <input type="text" placeholder="Enter UID"><button>+</button>
+        </div>
+        <button (click)="sendfeed(type)">send feed</button>
+
+    </div>
 </div>

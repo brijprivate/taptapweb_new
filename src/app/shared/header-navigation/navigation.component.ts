@@ -26,6 +26,7 @@ export class NavigationComponent implements AfterViewInit {
   public display_image: String = "";
   imgid: any;
   name: '';
+  email = '';
 
   constructor(private modalService: NgbModal, private SharedService: SharedserviceService, private router: Router, public api: SeriveService) {
 
@@ -39,6 +40,7 @@ export class NavigationComponent implements AfterViewInit {
       else {
         this.profiledata = profiledata.result;
         this.name = this.profiledata.name;
+        this.email = this.profiledata.email;
         console.log(this.profiledata)
         if (this.profiledata.imageId != null) {
           this.imgid = this.profiledata.imageId._id;
@@ -145,9 +147,15 @@ export class NavigationComponent implements AfterViewInit {
         console.log(err)
       })
   }
+
+
+  goto(url) {
+    this.router.navigateByUrl(url)
+  }
   logout() {
-    console.log('logout')
-    this.router.navigateByUrl('');
+    console.log('logout');
     localStorage.clear();
+    this.router.navigateByUrl('');
+
   }
 }
