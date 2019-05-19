@@ -6,8 +6,11 @@ import { SeriveService } from '../../service/serive.service';
   styleUrls: ['./time.component.css']
 })
 export class TimeComponent implements OnInit {
+  userid: string;
 
   constructor(public api: SeriveService) {
+    this.userid = localStorage.getItem('userid');
+
     this.gettime();
   }
 
@@ -15,7 +18,7 @@ export class TimeComponent implements OnInit {
   }
 
   gettime() {
-    this.api.gettime().subscribe(result => {
+    this.api.gettime(this.userid).subscribe(result => {
       console.log(result)
     },
       err => {

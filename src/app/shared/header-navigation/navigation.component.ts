@@ -27,8 +27,10 @@ export class NavigationComponent implements AfterViewInit {
   imgid: any;
   name: '';
   email = '';
+  userid: string;
 
   constructor(private modalService: NgbModal, private SharedService: SharedserviceService, private router: Router, public api: SeriveService) {
+    this.userid = localStorage.getItem('userid');
 
     this.SharedService.profiledata.subscribe(profiledata => {
       console.log('page ', profiledata);
@@ -140,7 +142,7 @@ export class NavigationComponent implements AfterViewInit {
   }
   getnotification() {
     console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-    this.api.getnotifications().subscribe(result => {
+    this.api.getnotifications(this.userid).subscribe(result => {
       console.log(result);
     },
       err => {

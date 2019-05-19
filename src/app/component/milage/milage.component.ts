@@ -7,8 +7,11 @@ import { SeriveService } from '../../service/serive.service';
   styleUrls: ['./milage.component.css']
 })
 export class MilageComponent implements OnInit {
+  userid: string;
 
   constructor(public api: SeriveService) {
+    this.userid = localStorage.getItem('userid');
+
     this.getmilage();
   }
 
@@ -16,7 +19,7 @@ export class MilageComponent implements OnInit {
   }
 
   getmilage() {
-    this.api.getmilage().subscribe(result => {
+    this.api.getmilage(this.userid).subscribe(result => {
       console.log(result)
     },
       err => {

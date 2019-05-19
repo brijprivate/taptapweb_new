@@ -4,6 +4,13 @@ canvas.chartjs-render-monitor {
     margin: 0 auto;
 }
 
+@media only screen  and (min-width:320px) and (max-width:1024px) {
+    canvas.chartjs-render-monitor {
+        height: auto !important;
+        width: 100% !important;
+        margin: 0 auto;
+    }
+}
 /*jssor slider loading skin spin css*/
 .jssorl-009-spin img {
     animation-name: jssorl-009-spin;

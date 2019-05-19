@@ -20,12 +20,11 @@
             <thead>
                 <tr class="bg-light">
                     <th class="border-top-0">Products</th>
+                  
                     <th class="border-top-0">Owner Name</th>
-                    <th class="border-top-0">Support Agent</th>
                     <th class="border-top-0">Status</th>
-                    <th class="border-top-0">Tickets</th>
-                    <th class="border-top-0">Sales</th>
-                    <th class="border-top-0">Earnings</th>
+                    <!-- <th class="border-top-0">Email</th> -->
+                  
                 </tr>
             </thead>
             <tbody>
@@ -40,19 +39,16 @@
                             </div>
                         </div>
                     </td>
-                    <td>{{device.owner.name}}</td>
-                    <td>{{device.owner.name}}</td>
+                    <td> {{device.owner.name}}</td>
+                    
                     <td>
                         <label class="label"> <label class="switch"><input type="checkbox"   id="togBtn" (change)="checklost($event,device)" [checked]='device.is_lost'>
                                 <div class="slider round"></div>
                             </label>
                         </label>
                     </td>
-                    <td>{{device.owner.website}}</td>
-                    <td>356</td>
-                    <td>
-                        <h5 class="m-b-0">{{device.owner.email}}</h5>
-                    </td>
+                    <!-- <td>{{device.owner.website}}</td> -->
+                   
                 </tr>
 
 
@@ -64,7 +60,7 @@
 
 <ng-template #content3 let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">{{modeldata.type}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>

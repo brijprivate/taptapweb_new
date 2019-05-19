@@ -28,8 +28,10 @@ export class ProfileComponent implements OnInit {
   country = '';
   website = ''
   email: any;
+  userid: string;
 
   constructor(private SharedService: SharedserviceService, private formBuilder: FormBuilder, public api: SeriveService, private router: Router) {
+    this.userid = localStorage.getItem('userid');
     this.profileFormErrors = {
       name: {},
       address: {},
@@ -131,7 +133,7 @@ export class ProfileComponent implements OnInit {
         imageId: this.imgid,
       }
       console.log('data,dat', data)
-      this.api.saveprofile(data).subscribe(value => {
+      this.api.saveprofile(this.userid,data).subscribe(value => {
         // this.toastr.success('Welcome!', 'Successfully Logged In'),
         console.log('login', value);
         something = value

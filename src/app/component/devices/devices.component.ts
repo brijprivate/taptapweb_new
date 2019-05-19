@@ -23,10 +23,11 @@ export class DevicesComponent implements OnInit {
   public submitted: boolean = false;
   public loader: boolean;
   check: boolean;
+  userid: string;
 
   constructor(private router: Router, public api: SeriveService, private modalService: NgbModal, private formBuilder: FormBuilder, ) {
 
-
+    this.userid = localStorage.getItem('userid');
     this.lostFormErrors = {
       email: {},
       name: {},
@@ -47,7 +48,7 @@ export class DevicesComponent implements OnInit {
   }
   getdevices() {
     let something: any;
-    this.api.getdevide().subscribe(result => {
+    this.api.getdevice(this.userid).subscribe(result => {
       console.log('device list', result);
       something = result;
       this.devices = something.result;
@@ -165,7 +166,7 @@ export class DevicesComponent implements OnInit {
 
       }
       console.log(data);
-      this.api.updatelostinfo(data).subscribe(value => {
+      this.api.updatelostinfo(this.userid,data).subscribe(value => {
         // this.toastr.success('Welcome!', 'Successfully Logged In'),
         console.log(' lost device update', value);
        

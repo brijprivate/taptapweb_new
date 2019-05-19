@@ -13,13 +13,13 @@ export class SeriveService {
 
   constructor(private http: HttpClient) {
     this.userid = localStorage.getItem('userid');
-  
+
   }
   login(data) {
     return this.http.post(baseURL + 'user/login', data);
   }
   getdetailsbyuserid(id) {
-    return this.http.get(baseURL + 'user/userDashboard?userId=' + this.userid);
+    return this.http.get(baseURL + 'user/userDashboard?userId=' + id);
   }
   getprofilebyuserid(id) {
     return this.http.get(baseURL + 'user/profile?id=' + id);
@@ -32,12 +32,11 @@ export class SeriveService {
     return this.http.post(baseURL + 'user/sendcode', data);
   }
 
-  saveprofile(data) {
-    return this.http.put(baseURL + 'user/updateprofile?id=' + (this.userid), data);
+  saveprofile(id,data) {
+    return this.http.put(baseURL + 'user/updateprofile?id=' + (id), data);
   }
-  getdevide() {
-    return this.http.get(baseURL + 'device/pairedList?owner=' + this.userid);
-
+  getdevice(id) {
+    return this.http.get(baseURL + 'device/pairedList?owner=' + id);
   }
 
   upload(file: any) {
@@ -45,30 +44,30 @@ export class SeriveService {
 
   }
 
-  tapdataindate() {
+  tapdataindate(id) {
     var date = new Date().toISOString();
-   
-    return this.http.get(baseURL + 'tapped/userdate?userId=' + this.userid + '&date' +date);
+
+    return this.http.get(baseURL + 'tapped/userdate?userId=' + id + '&date' + date);
 
   }
 
-  gettime() {
-    return this.http.get(baseURL + 'time/list?userId=' + this.userid);
+  gettime(id) {
+    return this.http.get(baseURL + 'time/list?userId=' + id);
   }
-  getmilage() {
-    return this.http.get(baseURL + 'milage/usermilage?userId=' + this.userid);
+  getmilage(id) {
+    return this.http.get(baseURL + 'milage/usermilage?userId=' + id);
   }
-  getnotifications() {
-    return this.http.get(baseURL + 'notifications/list?userId='+this.userid);
+  getnotifications(id) {
+    return this.http.get(baseURL + 'notifications/list?userId=' + id);
   }
-  gettapdatabyuser(){
-    return this.http.get(baseURL + 'tapped/usertappedItems?userId='+this.userid);
+  gettapdatabyuser(id) {
+    return this.http.get(baseURL + 'tapped/usertappedItems?userId=' + id);
 
   }
 
 
-  updatelostinfo(data){
-    return this.http.put(baseURL + 'device/updateDeviceInfo=' + (this.userid), data);
+  updatelostinfo(id, data) {
+    return this.http.put(baseURL + 'device/updateDeviceInfo=' + (id), data);
 
   }
   // upload(file: any) {

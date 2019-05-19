@@ -14,8 +14,11 @@ declare var $JssorSlider$;
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+  userid: string;
 
   constructor(private router: Router, public api: SeriveService, private modalService: NgbModal) {
+    this.userid = localStorage.getItem('userid');
+
     this.gettapdatabyuser();
    }
 
@@ -24,7 +27,7 @@ export class FeedComponent implements OnInit {
     let _base=this;
     
     var something: any;
-    _base.api.gettapdatabyuser().subscribe(result => {
+    _base.api.gettapdatabyuser(this.userid).subscribe(result => {
       something = result;
       console.log(something);
 

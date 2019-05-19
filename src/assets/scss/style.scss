@@ -43,3 +43,10 @@ File: scss
 
 // this is for the perfect scrollbar
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+
+
+ngb-accordion.accordion .card .card-header  .mb-0 button.btn.btn-link{
+    width: 100% !important;
+    text-align: left !important;
+}

@@ -14,11 +14,14 @@ declare var $JssorSlider$;
 })
 export class TaphistoryComponent implements OnInit {
 
-  tapdata=[];
-  constructor(private router: Router, public api: SeriveService, private modalService: NgbModal,  private SharedService: SharedserviceService
-    ) {
+  tapdata = [];
+  userid: string;
+  constructor(private router: Router, public api: SeriveService, private modalService: NgbModal, private SharedService: SharedserviceService
+  ) {
+    this.userid = localStorage.getItem('userid');
+
     this.gettapdatabyuser();
-   }
+  }
 
   ngOnInit() {
     jQuery(document).ready(function ($) {
@@ -74,13 +77,13 @@ export class TaphistoryComponent implements OnInit {
 
 
   gettapdatabyuser() {
-    let _base=this;
-    
+    let _base = this;
+
     var something: any;
-    _base.api.gettapdatabyuser().subscribe(result => {
+    _base.api.gettapdatabyuser(this.userid).subscribe(result => {
       something = result;
       console.log(something);
-      this.tapdata=something.result;
+      this.tapdata = something.result;
 
     },
       err => {
@@ -90,7 +93,7 @@ export class TaphistoryComponent implements OnInit {
   }
 
 
-  goto(tap){
+  goto(tap) {
     this.SharedService.taps(tap);
     this.router.navigateByUrl('/component/show')
   }

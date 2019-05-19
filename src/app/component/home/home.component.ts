@@ -34,12 +34,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, public api: SeriveService, private modalService: NgbModal) {
 
-    this.userid = localStorage.getItem('userid')
-    this.getdetailsbyuserid();
-    console.log(this.userid);
-    this.tapdataindate();
-
-   
+    this.userid = localStorage.getItem('userid');
+   console.log('ddddddddddddddddddddddddddddddd',this.userid)
   }
 
 
@@ -64,7 +60,7 @@ export class HomeComponent implements OnInit {
     let _base=this;
     this.pretoday = false;
     var something: any;
-    _base.api.tapdataindate().subscribe(result => {
+    _base.api.tapdataindate(this.userid).subscribe(result => {
       something = result;
       _base.today = something.result.length;
       _base.pretoday = true;
@@ -122,7 +118,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getdetailsbyuserid();
+    this.tapdataindate();
     jQuery(document).ready(function ($) {
 
       var xyz = function () {

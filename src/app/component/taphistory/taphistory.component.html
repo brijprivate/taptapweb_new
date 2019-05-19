@@ -103,20 +103,20 @@ data-scale="0.75" data-scale-right="0.75">
       <thead>
         <tr class="bg-light">
           <th class="border-top-0">Products</th>
-          <th class="border-top-0">License</th>
-          <th class="border-top-0">Support Agent</th>
+          <th class="border-top-0">Type</th>
+          <!-- <th class="border-top-0">Support Agent</th>
           <th class="border-top-0">Technology</th>
           <th class="border-top-0">Tickets</th>
           <th class="border-top-0">Sales</th>
-          <th class="border-top-0">Earnings</th>
+          <th class="border-top-0">Earnings</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tap of tapdata">
+        <tr *ngFor="let tap of tapdata;let i = index">
           <td >
             <div class="d-flex align-items-center">
               <div class="m-r-10">
-                <a class="btn btn-circle btn-info text-white">EA</a>
+                <a class="btn btn-circle btn-info text-white">{{i+1}}</a>
               </div>
               <div class="">
                 <!-- <h4 class="m-b-0 font-16">{{tap.contactId.name}}</h4> -->
@@ -125,14 +125,14 @@ data-scale="0.75" data-scale-right="0.75">
           </td>
           <td (click)="goto(tap)">{{tap.purpose}}</td>
           <!-- <td>{{tap.contactId.location}}</td> -->
-          <td>
+          <!-- <td>
             <label class="label label-danger">Angular</label>
           </td>
           <td>46</td>
           <td>356</td>
           <td>
             <h5 class="m-b-0">$2850.06</h5>
-          </td>
+          </td> -->
         </tr>
        
       </tbody>

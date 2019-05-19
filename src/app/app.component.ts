@@ -10,7 +10,15 @@ import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 export class AppComponent implements OnDestroy {
     private sub: any;
 
-    constructor(private slimLoader: SlimLoadingBarService, private router: Router) {
+    constructor( private slimLoader: SlimLoadingBarService, private router: Router) {
+
+        if(localStorage.getItem('userid')){
+            this.router.navigateByUrl('component/homepage')
+        }
+        else{
+            this.router.navigateByUrl('')
+
+        }
         // Listen the navigation events to start or complete the slim bar loading
         this.sub = this.router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
