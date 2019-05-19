@@ -1,5 +1,61 @@
 <!-- fashion  -->
 
+<div class="a">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- CAROUSEL -->
+            <ngb-carousel>
+                <ng-template ngbSlide>
+                    <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+                </ng-template>
+                <ng-template ngbSlide>
+                    <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
+
+                </ng-template>
+
+            </ngb-carousel>
+            <!-- End CAROUSEL -->
+            <div class="d-flex no-block align-items-center m-b-15">
+                <span>
+                    <i class="ti-calendar"></i> 19 May 2018</span>
+                <div class="ml-auto">
+                    <a href="javascript:void(0)" class="link">
+                        <i class="ti-comments"></i> 5 Comments</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-8 productClass">
+
+            <h3 class="font-normal"><b>Product Name:</b> {{data.name}}</h3>
+
+            <p class="m-b-0 m-t-10"> <b>Description:</b> {{data.description}}</p>
+            <p class="m-b-0 m-t-10"> <b>Product size:</b> {{data.size}}</p>
+            <p class="m-b-0 m-t-10"> <b>Product price:</b> {{data.price}}</p>
+            <p class="m-b-0 m-t-10"> <b>link to item:</b> {{data.weblink}}</p>
+
+            <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
+            <div class="uId">
+                <button class="minus">-</button> <input type="text" class="inputA" [value]='data.limit'><button
+                    class="add">+</button><br><br>
+                <input class="inputA" type="text" placeholder="Enter UID"><button class="add">+</button>
+                <div class="chip">
+                    John Doe
+                    <span class="closebtn">&times;</span>
+                </div>
+            </div>
+            <button class="feed" (click)="sendfeed(type)">Send Feed</button>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
 <div class="card" *ngIf="type=='Fashion'">
     <!-- CAROUSEL -->
     <ngb-carousel>
@@ -107,58 +163,7 @@
 
 
 
-<div class="card" *ngIf="type=='Contacts'">
-    <!-- CAROUSEL -->
-    <ngb-carousel>
-        <ng-template ngbSlide>
-            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
 
-        </ng-template>
-        <ng-template ngbSlide>
-            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
-
-        </ng-template>
-        <ng-template ngbSlide>
-            <img class="card-img-top img-responsive" [src]='display_image' alt="Card image cap">
-
-        </ng-template>
-    </ngb-carousel>
-    <!-- End CAROUSEL -->
-
-    <div class="card-body">
-       
-        <div class="d-flex no-block align-items-center m-b-15">
-            <span>
-                <i class="ti-calendar"></i> 19 May 2018</span>
-            <div class="ml-auto">
-                <a href="javascripPt:void(0)" class="link">
-                    <i class="ti-comments"></i> 5 Comments</a>
-            </div>
-        </div>
-        {{tapdata.purpose}}
-        <h3 class="font-normal">Name: {{tapdata.contactId.name}}</h3>
-        <h3 class="font-normal">location: {{tapdata.location}}</h3>
-
-
-        <p class="m-b-0 m-t-10">company:{{tapdata.contactId.company}}</p>
-        <p class="m-b-0 m-t-10">address:{{tapdata.contactId.address}}</p>
-        <p class="m-b-0 m-t-10">telephoneNumber:{{tapdata.contactId.telephoneNumber}}</p>
-        <p class="m-b-0 m-t-10">email:{{tapdata.contactId.email}}</p>
-        <p class="m-b-0 m-t-10">link:{{tapdata.contactId.link}}</p>
-
-        store data 
-        <p class="m-b-0 m-t-10">Store name:{{tapdata.storeId.name}}</p>
-        <p class="m-b-0 m-t-10">store admin name:{{tapdata.storeId.adminId.name}}</p>
-        <p class="m-b-0 m-t-10">store admin email:{{tapdata.storeId.adminId.email}}</p>
-        
-        <!-- <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button> -->
-        <div>
-            <input type="text" placeholder="Enter UID" [value]='tapdata.limit'><button>+</button>
-        </div>
-        <button (click)="sendfeed(type)">send feed</button>
-
-    </div>
-</div>
 
 
 
